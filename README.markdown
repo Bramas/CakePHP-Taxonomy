@@ -35,9 +35,19 @@ your terms indexed by their type.
 The Helper
 -------------------------------------------------------
 The Taxonomy helper allow you to create a quick and easy Taxonomy system
+Firstly you have to load the Helper
+
+	public $helper = array('Html','Form','Taxonomy.Taxonomy');
+
+To create a quick and easy tag manager use
+	
+	$this->Taxonomy->input('pet',array('label'=>'My pet'));
+
+The first parameter is the taxonomy type
+The second parameter is an array of option (the same than FormHelper::Input); 
 
 ToDo
 -------------------------------------------------------
 This plugin is a Work in progress
-* remove the unused terms
-* clean the afterSave hook to clean the right term_relationship
+*   remove the unused terms
+*   clean the afterSave hook (this will allow you to create "checkboxes" for managing your taxonomy)
