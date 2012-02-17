@@ -1,4 +1,4 @@
-Taxonomy Plugin for CakePHP 2.0 Alpha (Work in progress)
+Taxonomy Plugin for CakePHP 2.0 Beta
 ============================================================
 
 
@@ -31,6 +31,18 @@ For instance
 
 Moreover the behavior add a "terms" virtual field within your find results (if you properly set the recursive) and a "Taxonomy" index containing all
 your terms indexed by their type.
+If you want to create checkboxes for editing a specifing Taxonomy
+	
+	$this->Form->input('Model.terms.type',array('type'=>'select','multiple'=>'checkbox','options'=>$options));
+
+For instance if you want to edit the pet of an User
+
+	$this->Form->input('Model.terms.pet',array('type'=>'select','multiple'=>'checkbox','options'=>$pets)))
+
+If you want to find the list of some terms
+
+	$this->Model->listTerms('pet','category','tag',....);
+
 
 The Helper
 -------------------------------------------------------
@@ -46,8 +58,3 @@ To create a quick and easy tag manager use
 The first parameter is the taxonomy type
 The second parameter is an array of option (the same than FormHelper::Input); 
 
-ToDo
--------------------------------------------------------
-This plugin is a Work in progress
-*   remove the unused terms
-*   clean the afterSave hook (this will allow you to create "checkboxes" for managing your taxonomy)

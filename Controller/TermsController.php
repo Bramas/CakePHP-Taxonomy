@@ -17,7 +17,17 @@ class TermsController extends AppController{
 	}
 
 	function admin_delete($id){
+		$this->Term->TermR->id = $id;
+		$term_id = $this->Term->TermR->field('term_id');
 		$this->Term->TermR->delete($id); 
+
+		// On supprime le term si plus utilisé
+		$count = $this->Term->TermR->find('count',array(
+			'conditions' => array('term_id'=>$term_id)
+		));
+		if($count == 0){
+			$this->Term->delete($term_id); 
+		}
 		die(); 
 	}
 

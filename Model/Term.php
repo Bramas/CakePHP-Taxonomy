@@ -6,6 +6,8 @@ class Term extends AppModel{
 		'className' => 'Taxonomy.TermR',
 		'dependent' => true
 	)); 
+	public $displayField = 'name';
+
 
 	public function afterFind($data){
 		foreach($data as $k=>$v){
