@@ -17,13 +17,15 @@ class TaxonomyBehavior extends ModelBehavior{
 		if(isset($model->data[$model->name]['terms'])){
 			$model->deleteTerms(array_keys($model->data[$model->name]['terms'])); 
 			foreach($model->data[$model->name]['terms'] as $terms){
-				foreach($terms as $term_id){
-					$model->Term->TermR->create();
-					$model->Term->TermR->save(array(
-						'term_id' => $term_id,
-						'ref'	  => $model->name,
-						'ref_id'  => $model->id
-					));
+				if(!empty($terms)){
+					foreach($terms as $term_id){
+						$model->Term->TermR->create();
+						$model->Term->TermR->save(array(
+							'term_id' => $term_id,
+							'ref'	  => $model->name,
+							'ref_id'  => $model->id
+						));
+					}
 				}
 			}
 		}
